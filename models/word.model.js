@@ -15,4 +15,14 @@ const wordSchema = new Schema({
 	}
 })
 
+wordSchema.pre('save',function(next){
+	let isMyanmar = /[က-အ]/.test(this.burmese);
+	let isEng = /[A-z]/.test(this.english);
+	if(isMyanmar && isEng){
+		next();
+	} else {
+		next(new Error('WTF'));
+	}
+})
+
 module.exports = mongoose.model('Word',wordSchema)

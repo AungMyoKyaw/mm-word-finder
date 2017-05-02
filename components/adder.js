@@ -87,6 +87,7 @@ class Adder extends React.Component{
 			    font-weight:bolder;
 				}
 				div.err{
+					margin-top:1em;
 					font-size:1.7em;
 					font-weight:bolder;
 					border-left:.13em solid red;
