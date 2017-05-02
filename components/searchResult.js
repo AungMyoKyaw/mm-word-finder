@@ -13,6 +13,15 @@ class SearchResult extends React.Component{
 						<div key={index}>
 							<p>{result.english}</p>
 							<p>{result.burmese}</p>
+							<style jsx>{`
+								div{
+									border-bottom:.1em solid #009688;
+								}
+								p{
+									font-family:serief;
+									font-size:1.3em;
+								}
+							`}</style>
 						</div>
 					)
 				})}

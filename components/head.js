@@ -29,7 +29,7 @@ const head = () =>(
         top: 0;
         left: 0;
         width: 100%;
-        height: .2em;
+        height: .3em;
       }
 
       #nprogress .peg {

@@ -47,13 +47,52 @@ class Adder extends React.Component{
 
 	render(){
 		return (
-		<div>
+		<div className="search">
 			<form onSubmit={this.onSubmitHandler}>
-				<input name="eng" onChange={this.onChangeHandler} value={this.state.eng} placeholder="English" required/>
-				<input name="burmese" onChange={this.onChangeHandler} value={this.state.burmese} placeholder="Burmese" required/>
+				<input type="text" name="eng" onChange={this.onChangeHandler} value={this.state.eng} placeholder="English" required/>
+				<input type="text" name="burmese" onChange={this.onChangeHandler} value={this.state.burmese} placeholder="Burmese" required/>
 				<input type="submit" value="Add"/>
 			</form>
 			<div className="err">{this.state.err}</div>
+			<style jsx>{`
+				div.search{
+					width:60%;
+					margin:1em auto;
+				}
+				div.err{
+					font-size:1.7em;
+					font-weight:bolder;
+					border-left:.13em solid red;
+					padding-left:.2em;
+				}
+				input[type=text]{
+					resize:horizontal;
+					width:100%;
+					height:2em;
+					padding:.2em;
+					margin:1em auto;
+					font-size:1.3em;
+				}
+				input[type=submit]{
+					display: block;
+			    width:100%;
+			    height:2em;
+			    margin:auto;
+			    font-size:1.3em;
+			    border-style:none;
+			    border:0.2em solid #009688;
+			    border-radius:2em;
+			    background-color:#009688;
+			    color:white;
+			    font-weight:bolder;
+				}
+				div.err{
+					font-size:1.7em;
+					font-weight:bolder;
+					border-left:.13em solid red;
+					padding-left:.2em;
+				}
+			`}</style>
 		</div>
 		)
 	}
