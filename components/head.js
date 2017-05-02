@@ -14,6 +14,9 @@ const head = () =>(
 	  </Head>
 	  <style jsx global>
 	  {`
+	  	body{
+				margin:0;
+			}
 			 /* loading progress bar styles */
       #nprogress {
         pointer-events: none;
