@@ -1,29 +1,40 @@
 import React from 'react';
 import Result from './searchResult';
+import 'isomorphic-fetch';
+import Nprogress from 'nprogress';
 
 class Search extends React.Component{
 	constructor(props){
 		super(props);
-		this.state = {searchText:'',data:[]};
+		this.state = {searchText:'',data:[],err:''};
 		this.search = this.search.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
 
 	search(e){
-		e.preventDefault()
-		console.log(this.state.searchText)
-		let test = {
-			english:this.state.searchText,
-			burmese:this.state.searchText
-		}
-		this.setState((prevState)=>{
-			return (
-				{
-					data:[test]
+		e.preventDefault();
+		let text = this.state.searchText;
+		Nprogress.start();
+		fetch(`api/word?word=${text}`)
+			.then(res=>{
+				if(res.status !==200){
+					throw new Error(res.statusText)
+				} else {
+					return res.json();
 				}
-			)
-		})
-		console.log(this.state.data);
+			})
+			.then(resData=>{
+				if(resData.length){
+					this.setState({data:resData,err:''});
+				} else {
+					this.setState({data:[],err:'Not Found'});
+				}
+				Nprogress.done();
+			})
+			.catch(err=>{
+				Nprogress.done();
+				this.setState({err:err.message});
+			})
 	}
 
 	handleChange(e){
@@ -35,9 +46,10 @@ class Search extends React.Component{
 		return(
 			<div>
 				<form onSubmit={this.search}>
-					<input onChange={this.handleChange} value={this.state.searchText}/>
+					<input onChange={this.handleChange} value={this.state.searchText} placeholder="Search" required/>
 				</form>
 				<Result results={this.state.data}></Result>
+				<div className="err">{this.state.err}</div>
 			</div>
 		)
 	}

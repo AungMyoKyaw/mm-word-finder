@@ -2,13 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const wordSchema = new Schema({
-	burma:{
+	burmese:{
 		type:String,
-		required:true
+		required:true,
+		trim:true,
 	},
 	english:{
 		type:String,
-		required:true
+		required:true,
+		lowercase:true,
+		trim:true
 	}
 })
 

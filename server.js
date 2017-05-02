@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const compression = require('compression');
+const glob = require('glob');
+const bodyParser = require('body-parser');
 const next = require('next');
 
 const config = require('./config/config');
@@ -33,6 +35,12 @@ app.prepare()
 
 	//middleware
 	server.use(compression());
+	server.use(bodyParser.json());
+
+	let routeList = glob.sync('./routes/*.js')
+	routeList.forEach(route=>{
+		server.use('/api',require(route));
+	})
 
 	server.get('*',(req,res)=>{
 		return handle(req,res);
