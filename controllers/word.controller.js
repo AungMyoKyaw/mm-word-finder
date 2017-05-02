@@ -16,6 +16,7 @@ function findWord(req,res){
 	let isMyanmar = /[က-အ]/.test(text);
 	let searchQuery = isMyanmar ? {burmese:new RegExp(text,'i')} : {english:new RegExp(text,'i')};
 	word.find(searchQuery)
+		.limit(10)
 		.then(words=>{
 			res.json(words);
 		})

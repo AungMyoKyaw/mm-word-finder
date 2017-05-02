@@ -6,10 +6,17 @@ const wordSchema = new Schema({
 		type:String,
 		required:true,
 		trim:true,
+		index:true
 	},
 	english:{
 		type:String,
 		required:true,
+		lowercase:true,
+		trim:true,
+		index:true
+	},
+	type:{
+		type:String,
 		lowercase:true,
 		trim:true
 	}
@@ -17,7 +24,8 @@ const wordSchema = new Schema({
 
 wordSchema.pre('save',function(next){
 	let isMyanmar = /[က-အ]/.test(this.burmese);
-	let isEng = /[A-z]/.test(this.english);
+	// let isEng = /\w/.test(this.english);
+	let isEng = true;
 	if(isMyanmar && isEng){
 		next();
 	} else {
