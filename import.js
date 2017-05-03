@@ -63,6 +63,7 @@ function save(data){
 		let newWord = new word(data);
 		newWord.save()
 			.then(word=>{
+				console.log(word);
 				resolve(true);
 			})
 			.catch(err=>{
