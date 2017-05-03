@@ -9,8 +9,10 @@ Router.onRouteChangeError = ()=>Nprogress.done();
 const head = () =>(
 	<div>
 		<Head>
+			<title>Burmese Word Finder</title>
 	    <meta name="viewport" content="width=device-width, initial-scale=1" />
 	    <meta charSet="utf-8" />
+	    <link href="https://fonts.googleapis.com/css?family=Padauk" rel="stylesheet"/>
 	  </Head>
 	  <style jsx global>
 	  {`

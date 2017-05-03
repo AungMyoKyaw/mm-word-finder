@@ -18,7 +18,7 @@ class SearchResult extends React.Component{
 									border-bottom:.1em solid #009688;
 								}
 								p{
-									font-family:serief;
+									font-family: 'Padauk', sans-serif;
 									font-size:1.3em;
 								}
 							`}</style>
